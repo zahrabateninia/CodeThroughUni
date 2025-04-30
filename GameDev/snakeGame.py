@@ -27,8 +27,18 @@ class Snake:
         self.head = pygame.Rect(self.x, self.y, BLOCK_SIZE, BLOCK_SIZE)
         self.body = [pygame.Rect(self.x-BLOCK_SIZE, self.y, BLOCK_SIZE, BLOCK_SIZE)]
         self.dead = False
-     
+
+
+class Apple:
+    def __init__(self):
+        self.x = int(random.randint(0, SW)/BLOCK_SIZE) * BLOCK_SIZE
+        self.y = int(random.randint(0, SH)/BLOCK_SIZE) * BLOCK_SIZE
+        self.rect = pygame.Rect(self.x, self.y, BLOCK_SIZE, BLOCK_SIZE)
+    
     def update(self):
+        pygame.draw.rect(screen, "orange", self.rect)
+     
+def update(self):
         global apple
         
         for square in self.body:
