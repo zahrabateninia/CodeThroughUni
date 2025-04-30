@@ -6,7 +6,7 @@ pygame.init()    # Initialize all imported pygame modules
 
 # Set the screen width (SW) and screen height (SH) to 800 pixels each
 SW, SH = 800, 800
-
+BLOCK_SIZE = 50
 FONT = pygame.font.SysFont("comicsansms", 100)
 
 
@@ -18,6 +18,14 @@ pygame.display.set_caption("Snake!")
 
 # Create a clock object to manage the game's frame rate
 clock = pygame.time.Clock()
+
+
+def drawGrid():
+    for x in range(0, SW, BLOCK_SIZE):
+        for y in range(0, SH, BLOCK_SIZE):
+            rect = pygame.Rect(x, y, BLOCK_SIZE, BLOCK_SIZE)
+            pygame.draw.rect(screen, "#3c3c3b", rect, 1)
+
 
 # Start the main game loop
 while True:
