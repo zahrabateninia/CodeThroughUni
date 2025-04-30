@@ -27,7 +27,22 @@ class Snake:
         self.head = pygame.Rect(self.x, self.y, BLOCK_SIZE, BLOCK_SIZE)
         self.body = [pygame.Rect(self.x-BLOCK_SIZE, self.y, BLOCK_SIZE, BLOCK_SIZE)]
         self.dead = False
-    
+     
+    def update(self):
+        global apple
+        
+        for square in self.body:
+            if self.head.x == square.x and self.head.y == square.y:
+                self.dead = True
+            if self.head.x not in range(0, SW) or self.head.y not in range(0, SH):
+                self.dead = True
+
+
+
+
+
+
+                
 def drawGrid():
     for x in range(0, SW, BLOCK_SIZE):
         for y in range(0, SH, BLOCK_SIZE):
