@@ -1,6 +1,6 @@
-import pygame    # Import the pygame library for creating games
+import pygame   
 import sys       # Import the sys library to exit the game
-import random    # Import random for generating random values (not used yet)
+import random    
 
 pygame.init()    # Initialize all imported pygame modules
 
