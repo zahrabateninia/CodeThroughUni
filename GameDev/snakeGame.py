@@ -42,7 +42,7 @@ class Snake:
 
 
 
-                
+
 def drawGrid():
     for x in range(0, SW, BLOCK_SIZE):
         for y in range(0, SH, BLOCK_SIZE):
@@ -50,13 +50,28 @@ def drawGrid():
             pygame.draw.rect(screen, "#3c3c3b", rect, 1)
 
 drawGrid()
+
+
+snake = Snake()
 # Start the main game loop
 while True:
-    # Process all events (like keyboard and mouse input)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit()   # Uninitialize all pygame modules
-            sys.exit()     
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_DOWN:
+                snake.ydir = 1
+                snake.xdir = 0
+            elif event.key == pygame.K_UP:
+                snake.ydir = -1
+                snake.xdir = 0
+            elif event.key == pygame.K_RIGHT:
+                snake.ydir = 0
+                snake.xdir = 1
+            elif event.key == pygame.K_LEFT:
+                snake.ydir = 0
+                snake.xdir = -1  
 
     pygame.display.update()  # Update the full display surface to the screen
     clock.tick(10)           # Limit the game loop to 10 frames per second
