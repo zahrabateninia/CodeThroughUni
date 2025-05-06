@@ -14,20 +14,13 @@ def caesarCipher(text, shiftValue):
         return text
 
 
-    elif shiftValue < 0:
-        for char in text: 
-            if char in alphabet:
-                newPosition = alphabet.indexOf(char) - shiftValue
-                cipherText += alphabet[newPosition]
-            else: # if it wasn't a letter
-                cipherText += char
-    else: # shiftValue is positive
-        for char in text: 
-            if char in alphabet:
-                newPosition = alphabet.index(char) + shiftValue
-                cipherText += alphabet[newPosition]
-            else: # if it wasn't a letter
-                cipherText += char
+  
+    for char in text: 
+        if char in alphabet:
+            newPosition = alphabet.index(char) + shiftValue
+            cipherText += alphabet[newPosition]
+        else: # if it wasn't a letter
+            cipherText += char
 
     print(cipherText)
 
