@@ -1,39 +1,30 @@
 #!/usr/bin/env python3
 
-# To-Do: handle capital letters, input more than 100 chars
+import string
 
-ALPHABET_SMALL_LETTERS = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-ALPHABET_CAPITAL_LETTERS = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+# REFACTOR: Use string.ascii_lowercase and string.ascii_uppercase instead of hardcoded lists
+ALPHABET_SMALL_LETTERS = string.ascii_lowercase
+ALPHABET_CAPITAL_LETTERS = string.ascii_uppercase
 
+# REFACTOR: Use a helper function for shifting logic
+def shift_char(char, shift):
+    if char in ALPHABET_SMALL_LETTERS:
+        index = ALPHABET_SMALL_LETTERS.index(char)
+        return ALPHABET_SMALL_LETTERS[(index + shift) % 26]
+    elif char in ALPHABET_CAPITAL_LETTERS:
+        index = ALPHABET_CAPITAL_LETTERS.index(char)
+        return ALPHABET_CAPITAL_LETTERS[(index + shift) % 26]
+    else:
+        return char
 
-def caesarCipher(text, shiftValue):
-    # if shiftValue > 0 move forward, if negative move backward
-    # special characters such as $, %, " "... stay the same
-
+def caesar_cipher(text, shift_value):
     if len(text) > 100:
-        print("ERROR: Your sentence should be less than 100 characters!")
-        return
+        return "ERROR: Your sentence should be less than 100 characters!"
+    
+    #  return the result instead of printing
+    return ''.join(shift_char(char, shift_value) for char in text)
 
-    cipherText = ""
-
-    if shiftValue == 0:
-        return text
-
-
-  
-    for char in text: 
-        if char in ALPHABET_SMALL_LETTERS:
-            newPosition = (ALPHABET_SMALL_LETTERS.index(char) + shiftValue) % 26
-            cipherText += ALPHABET_SMALL_LETTERS[newPosition]
-        elif char in ALPHABET_CAPITAL_LETTERS:
-            newPosition = (ALPHABET_CAPITAL_LETTERS.index(char) + shiftValue)  % 26
-            cipherText += ALPHABET_CAPITAL_LETTERS[newPosition]
-        else: # if it wasn't a letter
-            cipherText += char
-
-    print(cipherText)
-
+# I/O
 text = input("Enter your sentence (less than 100 characters): ")
-shiftValue = int(input("Enter your desired shift value as well: "))
-
-caesarCipher(text, shiftValue)
+shift_value = int(input("Enter your desired shift value as well: "))
+print(caesar_cipher(text, shift_value))
