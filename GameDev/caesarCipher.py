@@ -2,7 +2,9 @@
 
 # To-Do: handle capital letters, input more than 100 chars
 
-alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+ALPHABET_SMALL_LETTERS = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+ALPHABET_CAPITAL_LETTERS = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+
 
 def caesarCipher(text, shiftValue):
     # if shiftValue > 0 move forward, if negative move backward
@@ -16,9 +18,12 @@ def caesarCipher(text, shiftValue):
 
   
     for char in text: 
-        if char in alphabet:
-            newPosition = alphabet.index(char) + shiftValue
-            cipherText += alphabet[newPosition]
+        if char in ALPHABET_SMALL_LETTERS:
+            newPosition = ALPHABET_SMALL_LETTERS.index(char) + shiftValue
+            cipherText += ALPHABET_SMALL_LETTERS[newPosition]
+        elif char in ALPHABET_CAPITAL_LETTERS:
+            newPosition = ALPHABET_CAPITAL_LETTERS.index(char) + shiftValue
+            cipherText += ALPHABET_CAPITAL_LETTERS[newPosition]
         else: # if it wasn't a letter
             cipherText += char
 
