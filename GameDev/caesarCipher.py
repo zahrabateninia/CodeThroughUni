@@ -23,10 +23,10 @@ def caesarCipher(text, shiftValue):
   
     for char in text: 
         if char in ALPHABET_SMALL_LETTERS:
-            newPosition = ALPHABET_SMALL_LETTERS.index(char) + shiftValue
+            newPosition = (ALPHABET_SMALL_LETTERS.index(char) + shiftValue) % 26
             cipherText += ALPHABET_SMALL_LETTERS[newPosition]
         elif char in ALPHABET_CAPITAL_LETTERS:
-            newPosition = ALPHABET_CAPITAL_LETTERS.index(char) + shiftValue
+            newPosition = (ALPHABET_CAPITAL_LETTERS.index(char) + shiftValue)  % 26
             cipherText += ALPHABET_CAPITAL_LETTERS[newPosition]
         else: # if it wasn't a letter
             cipherText += char
