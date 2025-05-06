@@ -10,6 +10,10 @@ def caesarCipher(text, shiftValue):
     # if shiftValue > 0 move forward, if negative move backward
     # special characters such as $, %, " "... stay the same
 
+    if len(text) > 100:
+        print("ERROR: Your sentence should be less than 100 characters!")
+        return
+
     cipherText = ""
 
     if shiftValue == 0:
