@@ -1,7 +1,7 @@
 import pygame
 import os
 from spaceship import Spaceship
-from game import draw_window, end_screen #تغییر کرد
+from game import draw_window, end_screen 
 from bullet import handle_bullets
 from settings import *
 
@@ -24,7 +24,7 @@ RED_IMG = pygame.transform.rotate(pygame.transform.scale(RED_IMG, (SPACESHIP_WID
 
 SPACE = pygame.transform.scale(pygame.image.load(os.path.join('Assets', 'space.png')), (WIDTH, HEIGHT))
 
-#جدید اضافه شد
+
 def login_screen():
     FONT = pygame.font.SysFont('comicsans', 40)
     input_active = True
@@ -158,7 +158,7 @@ def main(yellow_name, red_name):
                 if event.key == yellow.controls["shoot"] and len(yellow_bullets) < MAX_BULLETS:
                     bullet = pygame.Rect(yellow.rect.x + yellow.rect.width, yellow.rect.y + yellow.rect.height//2 - 2, 10, 5)
                     yellow_bullets.append(bullet)
-                    YELLOW_SHOOT_SOUND.play()#اضافه شد
+                    YELLOW_SHOOT_SOUND.play()
 
                 if event.key == red.controls["shoot"] and len(red_bullets) < MAX_BULLETS:
                     bullet = pygame.Rect(red.rect.x, red.rect.y + red.rect.height//2 - 2, 10, 5)
@@ -197,6 +197,7 @@ def main(yellow_name, red_name):
 
 if __name__ == "__main__":
     yellow_name, red_name = login_screen()
+    show_instructions(yellow_name, red_name)
     while True:
         winner = main(yellow_name, red_name)
         loser = red_name if winner == yellow_name else yellow_name
