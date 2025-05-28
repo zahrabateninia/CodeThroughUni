@@ -8,10 +8,13 @@ from settings import *
 pygame.init()
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space Combat")
+
+# Initialize audio and loads sound files for shooting.
 pygame.mixer.init()
 YELLOW_SHOOT_SOUND = pygame.mixer.Sound(os.path.join('Assets', 'Grenade+1.mp3'))
 RED_SHOOT_SOUND = pygame.mixer.Sound(os.path.join('Assets', 'Gun+Silencer.mp3')) 
 
+# Create a vertical border between the two players.
 BORDER = pygame.Rect(WIDTH // 2 - 5, 0, 10, HEIGHT)
 HEALTH_FONT = pygame.font.SysFont('comicsans', 40)
 
@@ -25,6 +28,7 @@ RED_IMG = pygame.transform.rotate(pygame.transform.scale(RED_IMG, (SPACESHIP_WID
 SPACE = pygame.transform.scale(pygame.image.load(os.path.join('Assets', 'space.png')), (WIDTH, HEIGHT))
 
 
+# Collect player names from keyboard input.
 def login_screen():
     FONT = pygame.font.SysFont('comicsans', 40)
     input_active = True
@@ -54,13 +58,14 @@ def login_screen():
                 exit()
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
+                if event.key == pygame.K_RETURN: # Enter key
                     if current_player == 1 and player1_name.strip():
                         current_player = 2
                     elif current_player == 2 and player2_name.strip():
                         return player1_name, player2_name
                 elif event.key == pygame.K_BACKSPACE:
                     if current_player == 1:
+                        # Removes the last character from the current player's name string (like erasing text)
                         player1_name = player1_name[:-1]
                     else:
                         player2_name = player2_name[:-1]

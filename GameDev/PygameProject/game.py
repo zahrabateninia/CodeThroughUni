@@ -3,9 +3,11 @@ from settings import *
 from bullet import handle_bullets
 pygame.font.init()
 
+# This module handles display rendering and end-of-game logic
+
 HEALTH_FONT = pygame.font.SysFont('comicsans', 40)
 
-
+# Draw everything on the screen (background, health, ships, bullets).
 def draw_window(win, bg, border, yellow, red, yellow_bullets, red_bullets, yellow_name, red_name):
     win.blit(bg, (0, 0))
     pygame.draw.rect(win, BLACK, border)
@@ -31,6 +33,7 @@ def draw_window(win, bg, border, yellow, red, yellow_bullets, red_bullets, yello
 def end_screen(win, winner_name, loser_name):
     font = pygame.font.SysFont('comicsans', 60)
     small_font = pygame.font.SysFont('comicsans', 30)
+    # a 10-second countdown timer to auto-exit
     countdown = 10
 
     running = True
@@ -69,6 +72,7 @@ def end_screen(win, winner_name, loser_name):
 
         pygame.time.delay(1000)
         countdown -= 1
+        # If countdown hits 0, auto-exits the game.
         if countdown == 0:
             pygame.quit()
             exit()
