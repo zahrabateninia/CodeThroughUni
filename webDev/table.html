@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample HTML Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin: 40px auto;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 10px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #8e4caf;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        caption {
+            font-weight: bold;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <caption>Employee Data</caption>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Position</th>
+                <th>Salary ($)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>Jane Doe</td>
+                <td>Engineering</td>
+                <td>Frontend Developer</td>
+                <td>85,000</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>John Smith</td>
+                <td>Engineering</td>
+                <td>Backend Developer</td>
+                <td>92,000</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Lisa Wong</td>
+                <td>Marketing</td>
+                <td>Content Strategist</td>
+                <td>70,000</td>
+            </tr>
+            <tr>
+                <td>104</td>
+                <td>Michael Brown</td>
+                <td>Design</td>
+                <td>UX Designer</td>
+                <td>78,000</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
